@@ -1,4 +1,4 @@
-import { add, sub } from "../src/main";
+import { add, sub, mul } from "../src/main";
 
 describe("計算のテスト", () => {
   test("足し算のテスト", () => {
@@ -7,5 +7,9 @@ describe("計算のテスト", () => {
 
   test("引き算のテスト", () => {
     expect(sub(2, 1)).toBe(1);
+  });
+
+  test("掛け算のテスト", () => {
+    expect(mul(2, 3)).toBe(6);
   });
 });
