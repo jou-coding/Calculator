@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { add, sub, mul, div } from "../src/main";
 
 describe("計算のテスト", () => {
