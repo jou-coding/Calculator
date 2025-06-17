@@ -1,21 +1,21 @@
-import { describe, test, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { Calculation, setupEvents } from "../src/main";
 
 describe("計算のテスト", () => {
   const calc = new Calculation();
-  test("足し算のテスト", () => {
+  it("足し算のテスト", () => {
     expect(calc.add(2, 3)).toBe(5);
   });
 
-  test("引き算のテスト", () => {
+  it("引き算のテスト", () => {
     expect(calc.sub(2, 1)).toBe(1);
   });
 
-  test("掛け算のテスト", () => {
+  it("掛け算のテスト", () => {
     expect(calc.mul(2, 3)).toBe(6);
   });
 
-  test("割り算のテスト", () => {
+  it("割り算のテスト", () => {
     expect(calc.div(4, 2)).toBe(2);
   });
 });
@@ -45,7 +45,7 @@ describe("setupEvents", () => {
     setupEvents(calc);
   });
 
-  test("二つの数字を加算して、結果を出す", () => {
+  it("二つの数字を加算して、結果を出す", () => {
     arg1.value = String(5);
     arg2.value = String(10);
     plusbtn.click();
@@ -53,7 +53,7 @@ describe("setupEvents", () => {
     expect(answer.textContent).toBe("15");
   });
 
-  test("もし空なら、何も表示しない", () => {
+  it("もし空なら、何も表示しない", () => {
     plusbtn.click();
     expect(answer.textContent).toBe("");
   });
