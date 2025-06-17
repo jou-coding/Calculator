@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach } from "vitest";
-import { add, sub, mul, div, getInputValuest } from "../src/main";
+import { add, sub, mul, div, setupEvents } from "../src/main";
 
 describe("計算のテスト", () => {
   test("足し算のテスト", () => {
@@ -19,18 +19,40 @@ describe("計算のテスト", () => {
   });
 });
 
-describe("getInputValue", () => {
+describe("setupEvents", () => {
+  //宣言
+  let arg1: HTMLInputElement;
+  let arg2: HTMLInputElement;
+  let plusbtn: HTMLButtonElement;
+  let answer: HTMLParagraphElement;
+
   beforeEach(() => {
     // テストごとにDOMをリセット
     document.body.innerHTML = `
-      <input type="number" id="1arg" value="42" />
-      <input type="number" id="2arg" value="7" />
+    <input id="1arg" />
+    <input id="2arg"/>
+    <button id="plusbtn">プラスボタン</button>
+    <p id="answer"></p>
     `;
-  });
-  test("インプットエレメントを数字をゲットする", () => {
-    const { number1, number2,plusbtn,answer } = getInputValuest();
 
-    expect(number1).toBe("42");
-    expect(number2).toBe("7");
+    arg1 = document.getElementById("1arg") as HTMLInputElement;
+    arg2 = document.getElementById("2arg") as HTMLInputElement;
+    plusbtn = document.getElementById("plusbtn") as HTMLButtonElement;
+    answer = document.getElementById("answer") as HTMLParagraphElement;
+
+    setupEvents();
+  });
+
+  test("二つの数字を加算して、結果を出す", () => {
+    arg1.value = String(5);
+    arg2.value = String(10);
+    plusbtn.click();
+
+    expect(answer.textContent).toBe("15");
+  });
+
+  test("もし空なら、何も表示しない", () => {
+    plusbtn.click();
+    expect(answer.textContent).toBe("");
   });
 });

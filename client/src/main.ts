@@ -5,22 +5,31 @@ body.append(table);
 const tbody = document.createElement("tbody");
 table.append(tbody);
 
-export function getInputValuest() {
+export function setupEvents() {
   const arg1 = document.getElementById("1arg");
   const arg2 = document.getElementById("2arg");
   const plusbtn = document.getElementById("plusbtn");
   const answer = document.getElementById("answer");
 
-  const number1 = arg1 instanceof HTMLInputElement ? arg1.value : null;
-  const number2 = arg2 instanceof HTMLInputElement ? arg2.value : null;
+  plusbtn?.addEventListener("click", () => {
+    //ユーザーが入力した後に読み取る必要がある。
+    const number1 = arg1 instanceof HTMLInputElement ? arg1.value : null;
+    const number2 = arg2 instanceof HTMLInputElement ? arg2.value : null;
+
+    if (number1 && number2) {
+      const result = add(Number(number1), Number(number2));
+      if (answer) {
+        answer.textContent = String(result);
+      }
+    }
+  });
   return {
-    number1,
-    number2,
     plusbtn,
     answer,
   };
 }
 
+setupEvents();
 const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 for (let i = 0; i <= 2; i++) {
