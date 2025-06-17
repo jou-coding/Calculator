@@ -1,11 +1,4 @@
-const body = document.body;
-
-const table = document.createElement("talbe");
-body.append(table);
-const tbody = document.createElement("tbody");
-table.append(tbody);
-
-export function setupEvents() {
+export function setupEvents(calc: Calculation) {
   const arg1 = document.getElementById("1arg");
   const arg2 = document.getElementById("2arg");
   const plusbtn = document.getElementById("plusbtn");
@@ -17,7 +10,7 @@ export function setupEvents() {
     const number2 = arg2 instanceof HTMLInputElement ? arg2.value : null;
 
     if (number1 && number2) {
-      const result = dentaku.add(Number(number1), Number(number2));
+      const result = calc.add(Number(number1), Number(number2));
       if (answer) {
         answer.textContent = String(result);
       }
@@ -29,37 +22,50 @@ export function setupEvents() {
   };
 }
 
-setupEvents();
-const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+function createTable() {
+  const body = document.body;
 
-for (let i = 0; i <= 2; i++) {
-  const tr = document.createElement("tr");
-  for (let j = 0; j <= 2; j++) {
-    const td = document.createElement("td");
-    const data = num.pop();
-    td.textContent = String(data);
+  const table = document.createElement("table");
+  body.append(table);
+  const tbody = document.createElement("tbody");
+  table.append(tbody);
+  const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-    td.classList.add(`num-${j}`);
-    tr.append(td);
+  for (let i = 0; i <= 2; i++) {
+    const tr = document.createElement("tr");
+    for (let j = 0; j <= 2; j++) {
+      const td = document.createElement("td");
+      const data = num.pop();
+      td.textContent = String(data);
+
+      td.classList.add(`num-${j}`);
+      tr.append(td);
+    }
+    tbody.append(tr);
   }
-  tbody.append(tr);
 }
 
 export class Calculation {
-  constructor() {}
-  add = (a: number, b: number) => {
+  add(a: number, b: number) {
     return a + b;
-  };
-  sub = (a: number, b: number) => {
+  }
+  sub(a: number, b: number) {
     return a - b;
-  };
+  }
 
-  mul = (a: number, b: number) => {
+  mul(a: number, b: number) {
     return a * b;
-  };
+  }
 
-  div = (a: number, b: number) => {
+  div(a: number, b: number) {
     return a / b;
-  };
+  }
 }
-const dentaku = new Calculation();
+
+function main() {
+  const calc = new Calculation();
+  setupEvents(calc);
+  createTable();
+}
+
+main();

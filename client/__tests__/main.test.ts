@@ -26,6 +26,7 @@ describe("setupEvents", () => {
   let arg2: HTMLInputElement;
   let plusbtn: HTMLButtonElement;
   let answer: HTMLParagraphElement;
+  const calc = new Calculation();
 
   beforeEach(() => {
     // テストごとにDOMをリセット
@@ -41,7 +42,7 @@ describe("setupEvents", () => {
     plusbtn = document.getElementById("plusbtn") as HTMLButtonElement;
     answer = document.getElementById("answer") as HTMLParagraphElement;
 
-    setupEvents();
+    setupEvents(calc);
   });
 
   test("二つの数字を加算して、結果を出す", () => {
