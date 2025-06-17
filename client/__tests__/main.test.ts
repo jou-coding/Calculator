@@ -1,21 +1,22 @@
 import { describe, test, expect, beforeEach } from "vitest";
-import { add, sub, mul, div, setupEvents } from "../src/main";
+import { Calculation, setupEvents } from "../src/main";
 
 describe("計算のテスト", () => {
+  const calc = new Calculation();
   test("足し算のテスト", () => {
-    expect(add(2, 3)).toBe(5);
+    expect(calc.add(2, 3)).toBe(5);
   });
 
   test("引き算のテスト", () => {
-    expect(sub(2, 1)).toBe(1);
+    expect(calc.sub(2, 1)).toBe(1);
   });
 
   test("掛け算のテスト", () => {
-    expect(mul(2, 3)).toBe(6);
+    expect(calc.mul(2, 3)).toBe(6);
   });
 
   test("割り算のテスト", () => {
-    expect(div(4, 2)).toBe(2);
+    expect(calc.div(4, 2)).toBe(2);
   });
 });
 

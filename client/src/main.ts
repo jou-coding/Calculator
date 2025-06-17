@@ -17,7 +17,7 @@ export function setupEvents() {
     const number2 = arg2 instanceof HTMLInputElement ? arg2.value : null;
 
     if (number1 && number2) {
-      const result = add(Number(number1), Number(number2));
+      const result = dentaku.add(Number(number1), Number(number2));
       if (answer) {
         answer.textContent = String(result);
       }
@@ -45,18 +45,21 @@ for (let i = 0; i <= 2; i++) {
   tbody.append(tr);
 }
 
-export const add = (a: number, b: number) => {
-  return a + b;
-};
+export class Calculation {
+  constructor() {}
+  add = (a: number, b: number) => {
+    return a + b;
+  };
+  sub = (a: number, b: number) => {
+    return a - b;
+  };
 
-export const sub = (a: number, b: number) => {
-  return a - b;
-};
+  mul = (a: number, b: number) => {
+    return a * b;
+  };
 
-export const mul = (a: number, b: number) => {
-  return a * b;
-};
-
-export const div = (a: number, b: number) => {
-  return a / b;
-};
+  div = (a: number, b: number) => {
+    return a / b;
+  };
+}
+const dentaku = new Calculation();
