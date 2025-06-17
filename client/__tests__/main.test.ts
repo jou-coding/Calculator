@@ -1,5 +1,5 @@
-import { describe, test, expect } from "vitest";
-import { add, sub, mul, div } from "../src/main";
+import { describe, test, expect, beforeEach } from "vitest";
+import { add, sub, mul, div, getInputValuest } from "../src/main";
 
 describe("計算のテスト", () => {
   test("足し算のテスト", () => {
@@ -16,5 +16,21 @@ describe("計算のテスト", () => {
 
   test("割り算のテスト", () => {
     expect(div(4, 2)).toBe(2);
+  });
+});
+
+describe("getInputValue", () => {
+  beforeEach(() => {
+    // テストごとにDOMをリセット
+    document.body.innerHTML = `
+      <input type="number" id="1arg" value="42" />
+      <input type="number" id="2arg" value="7" />
+    `;
+  });
+  test("インプットエレメントを数字をゲットする", () => {
+    const { number1, number2,plusbtn,answer } = getInputValuest();
+
+    expect(number1).toBe("42");
+    expect(number2).toBe("7");
   });
 });
