@@ -5,20 +5,18 @@ export function setupEvents(calc: Calculation) {
   const answer = $("answer");
   const equal = $("equal");
 
-  let arr: number = 0;
-
-  equal?.addEventListener("click", () => {
-    if (answer) {
-      answer.textContent = String(arr);
-      arr = 0;
-    }
-  });
-
   plusbtn?.addEventListener("click", () => {
     if (arg instanceof HTMLInputElement) {
       const number = arg.value;
-      arr = calc.add(arr, Number(number));
+      calc.add(Number(number));
       arg.value = "";
+    }
+  });
+
+  equal?.addEventListener("click", () => {
+    if (answer) {
+      answer.textContent = String(calc.get());
+      calc.clear();
     }
   });
 
@@ -52,8 +50,19 @@ function createTable() {
 }
 
 export class Calculation {
-  add(a: number, b: number) {
-    return a + b;
+  private result = 0;
+
+  get() {
+    return this.result;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  add(a: number) {
+    this.result = this.result + a;
+    return this.result;
   }
   sub(a: number, b: number) {
     return a - b;
