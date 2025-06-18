@@ -1,21 +1,28 @@
+const $ = (id: string) => document.getElementById(id);
+
 export function setupEvents(calc: Calculation) {
-  const arg1 = document.getElementById("1arg");
-  const arg2 = document.getElementById("2arg");
+  const arg = document.getElementById("arg");
   const plusbtn = document.getElementById("plusbtn");
   const answer = document.getElementById("answer");
+  const equal = $("equal");
 
-  plusbtn?.addEventListener("click", () => {
-    //ユーザーが入力した後に読み取る必要がある。
-    const number1 = arg1 instanceof HTMLInputElement ? arg1.value : null;
-    const number2 = arg2 instanceof HTMLInputElement ? arg2.value : null;
+  let arr: number = 0;
 
-    if (number1 && number2) {
-      const result = calc.add(Number(number1), Number(number2));
-      if (answer) {
-        answer.textContent = String(result);
-      }
+  equal?.addEventListener("click", () => {
+    if (answer) {
+      answer.textContent = String(arr);
+      arr = 0;
     }
   });
+
+  plusbtn?.addEventListener("click", () => {
+    if (arg instanceof HTMLInputElement) {
+      const number = arg.value;
+      arr = calc.add(arr, Number(number));
+      arg.value = "";
+    }
+  });
+
   return {
     plusbtn,
     answer,
