@@ -4,7 +4,7 @@ import { Calculation, setupEvents } from "../src/main";
 describe("計算のテスト", () => {
   const calc = new Calculation();
   it("足し算のテスト", () => {
-    expect(calc.add(2, 3)).toBe(5);
+    expect(calc.add(2)).toBe(2);
   });
 
   it("引き算のテスト", () => {
