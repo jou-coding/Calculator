@@ -1,9 +1,8 @@
-const $ = (id: string) => document.getElementById(id);
-
 export function setupEvents(calc: Calculation) {
-  const arg = document.getElementById("arg");
-  const plusbtn = document.getElementById("plusbtn");
-  const answer = document.getElementById("answer");
+  const $ = (id: string) => document.getElementById(id);
+  const arg = $("arg");
+  const plusbtn = $("plusbtn");
+  const answer = $("answer");
   const equal = $("equal");
 
   let arr: number = 0;
