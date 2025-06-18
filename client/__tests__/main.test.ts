@@ -22,35 +22,37 @@ describe("計算のテスト", () => {
 
 describe("setupEvents", () => {
   //宣言
-  let arg1: HTMLInputElement;
-  let arg2: HTMLInputElement;
+  let arg: HTMLInputElement;
   let plusbtn: HTMLButtonElement;
   let answer: HTMLParagraphElement;
+  let equal: HTMLButtonElement;
+
+  Number;
   const calc = new Calculation();
 
   beforeEach(() => {
-    // テストごとにDOMをリセット
     document.body.innerHTML = `
-    <input id="1arg" />
-    <input id="2arg"/>
-    <button id="plusbtn">プラスボタン</button>
+    <input id="arg" />
+    <button id="plusbtn">⁺</button>
+    <button id="equal">=</button>
     <p id="answer"></p>
     `;
 
-    arg1 = document.getElementById("1arg") as HTMLInputElement;
-    arg2 = document.getElementById("2arg") as HTMLInputElement;
+    arg = document.getElementById("arg") as HTMLInputElement;
     plusbtn = document.getElementById("plusbtn") as HTMLButtonElement;
     answer = document.getElementById("answer") as HTMLParagraphElement;
+    equal = document.getElementById("equal") as HTMLButtonElement;
 
     setupEvents(calc);
   });
 
   it("二つの数字を加算して、結果を出す", () => {
-    arg1.value = String(5);
-    arg2.value = String(10);
+    arg.value = String(5);
     plusbtn.click();
-
-    expect(answer.textContent).toBe("15");
+    arg.value = String(7);
+    plusbtn.click();
+    equal.click();
+    expect(answer.textContent).toBe("12");
   });
 
   it("もし空なら、何も表示しない", () => {
