@@ -3,6 +3,10 @@ import { Calculation, setupEvents } from "../src/main";
 
 describe("計算のテスト", () => {
   const calc = new Calculation();
+
+  it("getの単体テスト", () => {
+    expect(calc.get()).toBe(0);
+  });
   it("足し算のテスト", () => {
     expect(calc.add(2)).toBe(2);
   });
@@ -17,6 +21,10 @@ describe("計算のテスト", () => {
 
   it("割り算のテスト", () => {
     expect(calc.div(4, 2)).toBe(2);
+  });
+
+  it("clearの単体テスト", () => {
+    expect(calc.clear()).toBe(0);
   });
 });
 

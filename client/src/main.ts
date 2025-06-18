@@ -58,6 +58,7 @@ export class Calculation {
 
   clear() {
     this.result = 0;
+    return this.result
   }
 
   add(a: number) {
