@@ -27,6 +27,8 @@ export function setupEvents(calc: Calculation) {
 }
 
 function createTable() {
+  const $ = (id: string) => document.getElementById(id);
+  const arg = $("arg");
   const body = document.body;
 
   const table = document.createElement("table");
@@ -41,8 +43,12 @@ function createTable() {
       const td = document.createElement("td");
       const data = num.pop();
       td.textContent = String(data);
-
       td.classList.add(`num-${j}`);
+      td.addEventListener("click", () => {
+        if (arg instanceof HTMLInputElement) {
+          arg.value = arg.value + String(td.textContent);
+        }
+      });
       tr.append(td);
     }
     tbody.append(tr);
@@ -58,7 +64,7 @@ export class Calculation {
 
   clear() {
     this.result = 0;
-    return this.result
+    return this.result;
   }
 
   add(a: number) {
