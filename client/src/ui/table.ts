@@ -14,7 +14,7 @@ export function createTable() {
       const data = num.pop();
       td.textContent = String(data);
 
-      td.classList.add(`num-${j}`);
+      td.id = `num-${String(data)}`;
       tr.append(td);
     }
     tbody.append(tr);

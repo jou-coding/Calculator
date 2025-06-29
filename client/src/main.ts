@@ -8,6 +8,16 @@ export function setupEvents(calc: Calculation) {
   const answer = $("answer");
   const equal = $("equal");
 
+  for (let i = 1; i <= 9; i++) {
+    const btn = $(`num-${i}`);
+
+    btn?.addEventListener("click", () => {
+      if (arg instanceof HTMLInputElement) {
+        arg.value = arg.value + String(i);
+      }
+    });
+  }
+
   plusbtn?.addEventListener("click", () => {
     if (arg instanceof HTMLInputElement) {
       const number = arg.value;
@@ -39,8 +49,8 @@ export function setupEvents(calc: Calculation) {
 
 function main() {
   const calc = new Calculation();
-  setupEvents(calc);
   createTable();
+  setupEvents(calc);
 }
 
 main();
