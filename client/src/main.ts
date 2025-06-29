@@ -12,14 +12,22 @@ export function setupEvents(calc: Calculation) {
     if (arg instanceof HTMLInputElement) {
       const number = arg.value;
       calc.add(Number(number));
+      calc.setOperater("+");
       arg.value = "";
     }
   });
 
   equal?.addEventListener("click", () => {
-    if (answer) {
-      answer.textContent = String(calc.get());
+    if (
+      answer &&
+      calc.getOperater() === "+" &&
+      arg instanceof HTMLInputElement
+    ) {
+      const number = Number(arg?.value);
+      answer.textContent = String(calc.get() + number);
       calc.clear();
+      calc.setOperater("");
+      arg.value = "";
     }
   });
 

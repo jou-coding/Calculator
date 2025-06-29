@@ -1,8 +1,16 @@
 export class Calculation {
   private result = 0;
+  private operater = "";
 
   get() {
     return this.result;
+  }
+
+  setOperater(operater: string) {
+    this.operater = operater;
+  }
+  getOperater() {
+    return this.operater;
   }
 
   clear() {
