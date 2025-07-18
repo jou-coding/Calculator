@@ -1,8 +1,13 @@
+import { $ } from "../lib/$.js";
 export function createTable() {
-  const body = document.body;
+  const main: HTMLElement | null = $("container");
+  if (main === null) {
+    console.error("main is null");
+    return;
+  }
 
   const table = document.createElement("table");
-  body.append(table);
+  main.append(table);
   const tbody = document.createElement("tbody");
   table.append(tbody);
   const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
