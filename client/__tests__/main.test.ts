@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { Calculation, setupEvents } from "../src/main";
+import { setupEvents } from "../src/main";
+import { Calculation } from "../src/app/Calculation";
 
 describe("計算のテスト", () => {
   const calc = new Calculation();
