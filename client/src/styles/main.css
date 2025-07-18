@@ -1,3 +1,27 @@
+/* CSSリセット */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+  margin: 0; /* デフォルトのmarginを削除 */
+  padding: 0; /* デフォルトのpaddingを削除 */
+  box-sizing: border-box;
+}
 #header {
+  margin-top: 0;
+  flex-shrink: 0;
   text-align: center;
+}
+
+#container {
+  margin-top: 1rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+#footer {
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: auto;
 }
