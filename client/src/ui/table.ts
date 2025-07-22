@@ -20,9 +20,15 @@ export function createTable() {
     for (let j = 0; j <= 3; j++) {
       const td = document.createElement("td");
       const data = num.pop();
-      td.textContent = String(data);
-      td.id = `num-${String(data)}`;
-      tr.append(td);
+      if (typeof data === "string") {
+        td.textContent = String(data);
+        td.id = `${String(data)}`;
+        tr.append(td);
+      } else {
+        td.textContent = String(data);
+        td.id = `num-${String(data)}`;
+        tr.append(td);
+      }
     }
     tbody.append(tr);
   }

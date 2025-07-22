@@ -18,6 +18,21 @@ export function setupEvents(calc: Calculation) {
     });
   }
 
+  const mul = ["+", "-", "*", "/", "=", "."];
+  for (const item of mul) {
+    const btn = $(`${item}`);
+    btn?.addEventListener("click", () => {
+      if (arg instanceof HTMLInputElement) {
+        if (item === "+") {
+          const number = arg.value;
+          calc.add(Number(number));
+          calc.setOperater("+");
+          arg.value = "";
+        }
+      }
+    });
+  }
+
   plusbtn?.addEventListener("click", () => {
     if (arg instanceof HTMLInputElement) {
       const number = arg.value;
