@@ -8,14 +8,13 @@ export function setupEvents(calc: Calculation) {
 
   for (let i = 0; i <= 9; i++) {
     const btn = $(`num-${i}`);
-
+    // 電卓で数字を並べているロジック
     btn?.addEventListener("click", () => {
       if (arg instanceof HTMLInputElement) {
         arg.value = arg.value + String(i);
       }
     });
   }
-
   const mul = ["+", "-", "*", "/", "=", "."];
   for (const item of mul) {
     const btn = $(`${item}`);
@@ -26,17 +25,28 @@ export function setupEvents(calc: Calculation) {
           calc.add(Number(number));
           calc.setOperater("+");
           arg.value = "";
+        } else if (item === "-") {
+          const number = arg.value;
+          console.log("number:", number);
+          calc.sub(Number(number));
+          console.log("get:", calc.get());
+          calc.setOperater("-");
+          arg.value = "";
         } else if (item === "=") {
-          if (
-            answer &&
-            calc.getOperater() === "+" &&
-            arg instanceof HTMLInputElement
-          ) {
-            const number = Number(arg?.value);
-            answer.textContent = String(calc.get() + number);
-            calc.clear();
-            calc.setOperater("");
-            arg.value = "";
+          if (answer && arg instanceof HTMLInputElement) {
+            if (calc.getOperater() === "+") {
+              const number = Number(arg?.value);
+              answer.textContent = String(calc.get() + number);
+              calc.clear();
+              calc.setOperater("");
+              arg.value = "";
+            } else if (calc.getOperater() === "-") {
+              const number = Number(arg?.value);
+              answer.textContent = String(calc.sub(number));
+              calc.clear();
+              calc.setOperater("");
+              arg.value = "";
+            }
           }
         }
       }
