@@ -22,15 +22,18 @@ export class Calculation {
     this.result = this.result + a;
     return this.result;
   }
-  sub(a: number, b: number) {
-    return a - b;
+  sub(a: number) {
+    this.result = this.result - a;
+    return this.result;
   }
 
-  mul(a: number, b: number) {
-    return a * b;
+  mul(a: number) {
+    this.result = this.result * a;
+    return this.result;
   }
 
-  div(a: number, b: number) {
-    return a / b;
+  div(a: number) {
+    this.result = this.result / a;
+    return this.result;
   }
 }
