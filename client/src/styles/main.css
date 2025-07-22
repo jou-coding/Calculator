@@ -18,10 +18,27 @@ body {
   margin-top: 1rem;
   flex: 1;
   overflow-y: auto;
+  text-align: center;
 }
 
 #footer {
   text-align: center;
   flex-shrink: 0;
   margin-top: auto;
+}
+
+#calcTable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calc {
+  border: 1px solid black;
+  padding: 0px;
+}
+
+#calc td {
+  border: 1px solid black;
+  padding: 20px;
 }
