@@ -8,7 +8,7 @@ export function setupEvents(calc: Calculation) {
   const answer = $("answer");
   const equal = $("equal");
 
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 0; i <= 9; i++) {
     const btn = $(`num-${i}`);
 
     btn?.addEventListener("click", () => {

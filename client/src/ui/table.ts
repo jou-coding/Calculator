@@ -10,15 +10,14 @@ export function createTable() {
   table.id = "calcTable";
   main.append(table);
   const tbody = document.createElement("tbody");
-  console.log(tbody);
   tbody.id = "calc";
   table.append(tbody);
 
-  const num = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let num = ["+", "=", ".", 0, "-", 3, 2, 1, "*", 6, 5, 4, "-", 9, 8, 7];
 
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i <= 3; i++) {
     const tr = document.createElement("tr");
-    for (let j = 0; j <= 2; j++) {
+    for (let j = 0; j <= 3; j++) {
       const td = document.createElement("td");
       const data = num.pop();
       td.textContent = String(data);
