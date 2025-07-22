@@ -27,10 +27,13 @@ export function setupEvents(calc: Calculation) {
           arg.value = "";
         } else if (item === "-") {
           const number = arg.value;
-          console.log("number:", number);
           calc.sub(Number(number));
-          console.log("get:", calc.get());
           calc.setOperater("-");
+          arg.value = "";
+        } else if (item === "*") {
+          const number = arg.value;
+          calc.mul(Number(number));
+          calc.setOperater("*");
           arg.value = "";
         } else if (item === "=") {
           if (answer && arg instanceof HTMLInputElement) {
@@ -43,6 +46,12 @@ export function setupEvents(calc: Calculation) {
             } else if (calc.getOperater() === "-") {
               const number = Number(arg?.value);
               answer.textContent = String(calc.sub(number));
+              calc.clear();
+              calc.setOperater("");
+              arg.value = "";
+            } else if (calc.getOperater() === "*") {
+              const number = Number(arg?.value);
+              answer.textContent = String(calc.mul(number));
               calc.clear();
               calc.setOperater("");
               arg.value = "";
