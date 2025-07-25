@@ -32,6 +32,10 @@ export class Calculation {
   }
 
   mul(a: number) {
+    if (this.result === 0) {
+      this.result = a;
+      return;
+    }
     this.result = this.result * a;
     return this.result;
   }
