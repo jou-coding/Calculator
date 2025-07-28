@@ -35,6 +35,11 @@ export function setupEvents(calc: Calculation) {
           calc.mul(Number(number));
           calc.setOperater("*");
           arg.value = "";
+        } else if (item === "/") {
+          const number = arg.value;
+          calc.div(Number(number));
+          calc.setOperater("/");
+          arg.value = "";
         } else if (item === "=") {
           if (answer && arg instanceof HTMLInputElement) {
             if (calc.getOperater() === "+") {
@@ -52,6 +57,12 @@ export function setupEvents(calc: Calculation) {
             } else if (calc.getOperater() === "*") {
               const number = Number(arg?.value);
               answer.textContent = String(calc.mul(number));
+              calc.clear();
+              calc.setOperater("");
+              arg.value = "";
+            } else if (calc.getOperater() === "/") {
+              const number = Number(arg?.value);
+              answer.textContent = String(calc.div(number));
               calc.clear();
               calc.setOperater("");
               arg.value = "";
