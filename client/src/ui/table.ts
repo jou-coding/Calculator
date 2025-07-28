@@ -13,7 +13,7 @@ export function createTable() {
   tbody.id = "calc";
   table.append(tbody);
 
-  let num = ["+", "=", ".", 0, "-", 3, 2, 1, "*", 6, 5, 4, "/", 9, 8, 7];
+  let num = ["+", "=", "", 0, "-", 3, 2, 1, "*", 6, 5, 4, "/", 9, 8, 7];
 
   for (let i = 0; i <= 3; i++) {
     const tr = document.createElement("tr");
