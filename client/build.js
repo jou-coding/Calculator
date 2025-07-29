@@ -17,6 +17,7 @@ async function build() {
     await fs.copy("index.html", "dist/index.html");
     await fs.copy("src/styles/main.css", "dist/main.css");
     await fs.copy("images/icon.png", "dist/icon.png");
+    await fs.copy("manifest.json", "dist/manifest.json");
 
     const filePath = "dist/index.html";
     let html = fs02.readFileSync(filePath, "utf-8");
